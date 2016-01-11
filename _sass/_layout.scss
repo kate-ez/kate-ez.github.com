@@ -2,22 +2,39 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
+    border-bottom: 1px solid #eeeeee;
+    height: $header-height;
 
     // Positioning context for the mobile navigation icon
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
 }
 
 .site-title {
-    font-size: 26px;
-    font-weight: 300;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
     float: left;
-
+    
+    .site-logo {
+      width: 160px;
+      height: 66px;
+      display: inline-block;
+      background: url('../img/logo.png') no-repeat center center;
+      background-size: 80% 80%;
+      text-indent: -9999px;
+    }
+    
+    .site-title {
+      float:right;
+      font-weight:600;
+      margin:3px 0 0 -20px;
+      height: 66px;
+      line-height: 66px;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+    }
+    
     &,
     &:visited {
         color: $grey-color-dark;
@@ -26,20 +43,24 @@
 
 .site-nav {
     float: right;
-    line-height: 56px;
+    line-height: $header-height;
 
     .menu-icon {
         display: none;
     }
 
     .page-link {
-        color: $text-color;
-        line-height: $base-line-height;
+      display: inline-block;
+      color: $text-color;
+      
+      &:hover {
+        color: $brand-color;
+      }
 
-        // Gaps between nav items, but not on the last one
-        &:not(:last-child) {
-            margin-right: 20px;
-        }
+      // Gaps between nav items, but not on the last one
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
     }
 
     @include media-query($on-palm) {
@@ -98,7 +119,9 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+    //border-top: 1px solid $grey-color-light;
+    text-align: center;
+    color: $grey-color-light;
     padding: $spacing-unit 0;
 }
 
@@ -168,43 +191,109 @@
  * Page content
  */
 .page-content {
-    padding: $spacing-unit 0;
+    padding: $header-height 0 $spacing-unit;
+    
+    .wrapper {
+      max-width: 100%;
+      padding: 0;
+    }
 }
 
 .page-heading {
     font-size: 20px;
 }
 
-.post-list {
-    margin-left: 0;
-    list-style: none;
+.visual {
+  width: 100%;
+  height: 0;
+  padding-top: 20%;
+  background: url(../img/slide2.jpg) no-repeat center top;
+  background-size: cover;
+}
 
-    > li {
-        margin-bottom: $spacing-unit;
-    }
+.list {
+  float: left;
+  width: 65%;
+  
+  @include media-query($on-palm) {
+    width: 100%;
+  }
+}
+
+.list-module {
+  padding: $spacing-unit * 1.5 0;
+  border-bottom: 1px solid #dddddd;
+  
+  &:last-of-type {
+    border-bottom: none;
+  }
+  
+  h2 {
+    margin-bottom: 0;
+  }
 }
 
 .post-meta {
     font-size: $small-font-size;
-    color: $grey-color;
+    color: $grey-color-dark;
 }
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-size: 32px;
+    color: $text-color;
+    
+    &:hover {
+      text-decoration: none;
+    }
+    
+    &:visited {
+      color: $text-color;
+    }
 }
 
+.post-description {
+  padding: $spacing-unit / 2 0;
+  font-size: 16px;
+  font-weight: 200;
+  color: #222222;
+}
 
+.page-aside {
+  float: right;
+  width: 25%;
+  box-sizing: border-box;
+  padding: $spacing-unit;
+  background-color: #f7f7f7;
+  
+  section {
+    margin-bottom: $spacing-unit;
+    
+    ul {
+      list-style: none;
+      margin-left: 0;
+      
+      li {
+        font-size: 16px;
+      }
+    }   
+  
+  }
+  
+  @include media-query($on-palm) {
+    display: none;
+  }
+}
 
 /**
  * Posts
  */
 .post-header {
-    margin-bottom: $spacing-unit;
+    margin: $spacing-unit * 2 0 $spacing-unit;
 }
 
 .post-title {
-    font-size: 42px;
+    font-size: 46px;
     letter-spacing: -1px;
     line-height: 1;
 
@@ -215,6 +304,14 @@
 
 .post-content {
     margin-bottom: $spacing-unit;
+    
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: $spacing-unit * 2;
+    }
 
     h2 {
         font-size: 32px;
@@ -239,4 +336,41 @@
             font-size: 18px;
         }
     }
+    
+    a {
+      text-decoration: underline;
+      color: $brand-color;
+    }
+}
+
+.go-list {
+  display: block;
+  margin: 100px auto 0;
+  text-align: center;
+}
+
+
+/**
+ * Pagination
+ */
+.pagination {
+	width: 100%;
+	margin: $spacing-unit auto;
+	text-align: center;
+	
+	span,
+	a {
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		vertical-align: middle;
+		border: 1px solid #eee;
+		text-align: center;
+		
+		&.current-page {
+			font-weight: bold;
+			color: $brand-color;
+		}
+	}
 }
