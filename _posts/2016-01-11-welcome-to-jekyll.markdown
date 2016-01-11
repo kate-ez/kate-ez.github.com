@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
+author: ezlee
 date:   2016-01-11 18:34:09 +0900
 categories: jekyll update
 ---
