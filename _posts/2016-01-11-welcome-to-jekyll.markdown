@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "새로운 블로그에 오신 걸 환영합니다!"
 author: ezlee
 date:   2016-01-11 18:34:09 +0900
 categories: css
