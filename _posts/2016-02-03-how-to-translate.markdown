@@ -5,7 +5,7 @@ description: "이 글은 번역을 하면서 느낀 어려운 점들을 정리�
 다른 사람들이 번역을 할 때 정리하면 좋은 것들과 기술 문서, 오픈 소스에 기여하는 첫 단계인 번역에 대해 이야기 하고자 한다."
 author: echo
 date:   2016-02-06 14:39:09 +0900
-categories: blah blah
+categories: blah_blah
 published: true
 ---
 
