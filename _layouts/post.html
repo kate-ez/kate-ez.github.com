@@ -15,7 +15,15 @@ layout: default
 	    {{ content }}
 	  </div>
 	  
-	  <a href="/" class="btn go-list">목록으로 돌아가기</a>
+	  <a href="/" class="btn btn-block" id="back">목록으로 돌아가기</a>
 	
 	</article>
 </section>
+
+<script>
+	var goback = document.getElementById("back");
+    goback.addEventListener('click', function(event) {
+        window.history.back();
+        event.stopPropagation();
+    });
+</script>
