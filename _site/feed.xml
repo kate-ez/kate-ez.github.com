@@ -5,9 +5,253 @@
     <description>우아한형제들의 기술블로그입니다. 많은 내용이 올라갈거예요~ 기다려주세요</description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Feb 2016 15:26:59 +0900</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 15:26:59 +0900</lastBuildDate>
+    <pubDate>Thu, 04 Feb 2016 13:58:36 +0900</pubDate>
+    <lastBuildDate>Thu, 04 Feb 2016 13:58:36 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Class 없이 OOP 하기</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;저자&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://j.mp/1ea27KW&quot;&gt;@ahastudio&lt;/a&gt; - 우아한형제들에서 Ruby on Rails로 LINE WOW를 개발했고, 최근엔 Java와 Spring Boot로 배달의민족 신규시스템을 개발하고 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;시작하며&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://j.mp/1QPHpTf&quot;&gt;한국 루비 커뮤니티 2015년 대림절 달력 첫 글&lt;/a&gt;을 JavaScript로 옮겨보겠습니다. 그냥 Copy&amp;amp;Paste해서 몇몇 부분만 고칠 거라 이상해도 양해 부탁드립니다.&lt;/p&gt;
+
+&lt;p&gt;OOP라고 하면 Class와 Instance 개념을 떠올리는 경우가 많습니다. 객체끼리 서로 협력한다는 기본 원리만 가지고도 프로그래밍이 가능하다면 어떻게 될까요? Class가 없는 언어 중 하나인 JavaScript(ES6 이전 기준)를 통해 Class 없는 OOP를 경험해 봅시다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;준비물&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Node.js&lt;/li&gt;
+  &lt;li&gt;흥미&lt;/li&gt;
+  &lt;li&gt;용기&lt;/li&gt;
+  &lt;li&gt;사랑과 우정 (필수는 아님)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;객체 만들기&lt;/h2&gt;
+&lt;p&gt;간단한 객체를 만들어 봅시다. 일단 Node 인터프리터 환경을 실행하죠.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ node
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;객체가 뭘까요? 객체를 설명하는 방법은 너무나도 많은데, 추상화 단계를 너무 높이지 않고 손에 만져지는 걸로 살펴봅시다. “한 소년이 있었습니다” 정도면 어떨까요?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+var boy = new Object();
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;소년이 하나 만들어졌습니다. 제대로 잘 됐는지 한번 확인해 보죠.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+console.log(boy);
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;결과:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;우리가 잘 아는 게 나왔죠? 그냥 빈 객체를 만들 땐 힘들게 &lt;code class=&quot;highlighter-rouge&quot;&gt;new Object&lt;/code&gt; 하지 말고, 그냥 &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt; 쓰시면 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;객체에 특성 부여하기&lt;/h2&gt;
+&lt;p&gt;소년을 소년이라고 부르니 뭔가 밋밋한 것 같네요. 소년에게 이름을 붙여주면 어떨까요? 무난하게 “강동원”이라고 합시다. 객체에 이름을 넣어주면 간단히 해결됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+boy.name = &#39;Kang Dong-won&#39;;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;자, 이제 소년의 이름을 한번 확인해 볼까요?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+console.log(boy.name);
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;결과:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+Kang Dong-won
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;또 다른 객체 만들기&lt;/h2&gt;
+&lt;p&gt;소년은 혼자 있으니 슬펐습니다. 그러니 여자친구를 하나 만들어보죠.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+var girl = Object.create(boy);
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;강동원을 프로토타입으로 소녀 객체가 만들어졌습니다. 강동원을 프로토타입으로 삼고 있기 때문에 한가지 문제가 있습니다. 소녀가 강동원가 똑같이 행동한다는 거죠.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+console.log(girl.name);
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;결과:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+Kang Dong-won
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;“그럴 땐 얘기를 나누자 거울 속의 나하고”가 아니라면 이 상황을 벗어나야겠죠? 여자친구에게 이름을 하나 지어줍시다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+girl.name = &#39;Don Don&#39;;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 둘을 사랑스럽게 엮어줄 수 있겠네요.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;javascript
+console.log([boy.name, girl.name].join(&#39; ♥ &#39;));
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;결과:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+Kang Dong-won ♥ Don Don
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;액션!&lt;/h2&gt;
+&lt;p&gt;Class 없이 객체를 만들고, 특성을 부여하고, 이걸 활용하는 게 얼마나 쉬운지 우리는 경험했습니다. 강동원에게 구마 의식을 수행하게 하는 것도 이제는 쉽겠죠?&lt;/p&gt;
+
+&lt;p&gt;```javascript
+girl.bad = true;&lt;/p&gt;
+
+&lt;p&gt;// 소녀의 상태 확인
+console.log(girl.bad);&lt;/p&gt;
+
+&lt;p&gt;// 강동원에게 구마 능력 부여
+// ES6 arrow function 사용함. MDN 문서 참고: http://j.mp/1NQfCfS
+boy.performExorcism = target =&amp;gt; { target.bad = false };&lt;/p&gt;
+
+&lt;p&gt;// 구마
+boy.performExorcism(girl);&lt;/p&gt;
+
+&lt;p&gt;// 소녀의 상태 다시 확인
+console.log(girl.bad);
+```&lt;/p&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;정리하며&lt;/h2&gt;
+&lt;p&gt;객체지향의 핵심은 객체입니다. 타입을 명확히 하고 싶어서 클래스를 사용하는 거죠. 이 둘을 명확히 구분해서 쓸 때, 유연함과 견고함의 균형을 맞출 수 있지 않을까요? &lt;a href=&quot;http://j.mp/VHCBT8&quot;&gt;TypeScript&lt;/a&gt;도 한번 써보세요!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;EOT&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Feb 2016 13:54:09 +0900</pubDate>
+        <link>http://yourdomain.com/javascript/2016/02/04/oop-without-class.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/javascript/2016/02/04/oop-without-class.html</guid>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>왜 남의나라 말은 어려운가</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;번역회고록 - 왜 남의나라 말은 어려운가&lt;/h1&gt;
+&lt;p&gt;올 해 9월 중순부터 W3C 권고안을 번역하기 시작했다.
+12월 13일을 기준으로 총 13개 권고안, 1개의 프레스 릴리즈를 번역하였으며, 추가로 번역하고 있는 문서는 약 4개 정도 된다.
+번역한 문서 인덱스는 개인 블로그인 techhtml과 W3C 한국어 번역 사이트에서 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 글은 번역을 하면서 느낀 어려운 점들을 정리하는 문서이기도 하지만,
+다른 사람들이 번역을 할 때 정리하면 좋은 것들과 기술 문서, 오픈 소스에 기여하는 첫 단계인 번역에 대해 이야기 하고자 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;기술은 영어다&lt;/h2&gt;
+&lt;p&gt;우리가 이해하는 대부분의 기술들은 영어로 이루어져있다.
+기술을 전세계에 배포해야하고, 또 브라우저 개발자 혹은 여러 기관에서 표준을 따라야 할 필요가 있을 때,
+그 표준을 준수하기 위해서 가장 진입장벽이 낮은 언어가 영어이기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;최초 개발자가 사용하는 언어에 따라서 그게 일본어로 되어있을 수도, 영어로 되어있을 수도 있지만,
+대부분의 기술 문서는 영어로 되어있다.&lt;/p&gt;
+
+&lt;p&gt;따라서 한국에서 기술 문서를 읽기 위해서는 3가지 길을 걸을 수 있다.
+- 영어를 공부한다.
+- 직접 번역한다.
+- 번역 전문 업체에 번역을 의뢰하거나, 새로운 번역본이 나오기를 기다린다.&lt;/p&gt;
+
+&lt;p&gt;개인적으로 세번째는 권장하지 않는다.
+번역 전문 업체에서 번역하는 문장은 뛰어난 케이스가 매우 적다.
+한국에서도 스펙을 번역하고자 하는 움직임은 예전부터 있었지만, 실제로 그 퀄리티가 뛰어난 경우를 본 적은 없다.&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;왜 번역은 어려운가.&lt;/h2&gt;
+&lt;p&gt;기술문서에서 사용하는 영어는 우리가 일상회화에서 쓰는 영어보다 숨겨진 내용이 많으며,
+평소에 자주 사용하지 않는 문장이 굉장히 많은 편이다. 아래 문장을 살펴보자.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This section describes the status of this document at the time of its publication. Other documents may supersede this document.
+A list of current W3C publications and the latest revision of this technical report can be found in the W3C technical reports index at http://www.w3.org/TR/.
+이 섹션은 이 문서가 발행된 당시의 상태에 대해 설명합니다. 다른 문서가 이 문서를 대체할 수도 있습니다.
+이 문서 및 W3C에서 공개한 다른 문서의 최신 버전은 W3C technical reports index at http://www.w3.org/TR/에서 확인 가능합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;기술 문서를 번역할 때 가장 많이 벽에 부딪히는 건, 처음으로 나타나는 단어를 어떻게 번역할 지에 대한 고민이다.
+예를 들어, technical report라는 용어는 번역하는 사람에 따라서,
+- 기술 보고서
+- 기술 레포트
+- 테크니컬 리포트
+- 기술 문서
+라고 번역할 수 있지만, 그 중에 어떤 것이 반드시 맞느냐라고 하면 문맥, 전체 흐름, 문서 목적에 따라 달라 질 수 있다.
+참고로 본인은 그냥 문서라고 번역하고 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;번역은 어떻게 진행하는가.&lt;/h2&gt;
+&lt;p&gt;권고안 번역은 기술 문서 번역과 상당히 다르다.&lt;/p&gt;
+
+&lt;p&gt;기술 문서는 기술을 어떻게 사용해야하는가에 초점을 두고있다면,
+권고안은 해당 기술의 사용방법, 해당 기술을 잘 사용하는 방법, 브라우저 개발사 및 제조사에서 어떻게 구현해야하는 지, 다른 기술과의 충돌성 등을 다룬다.&lt;/p&gt;
+
+&lt;p&gt;그래서 권고안 번역은 일반 기술 문서 번역보다 어렵다.
+하지만 권고안을 번역한다는 건 해당 기술을 온전히, 혹은 완전히 이해하기에 도움이 되는 경우가 많기 때문에,
+권고안 번역을 다소 권장하고 있으며 공식 문서가 될 가능성이 없더라도 본인이 관심있는 분야의 기술 문서라면 개인 시간에 번역하는 것도 좋을 것이다.&lt;/p&gt;
+
+&lt;p&gt;문서에 따라 다소 다르겠지만,
+일반적인 W3C 권고안 번역 단계는 아래와 같다.
+1. 번역할 문서를 찾은 뒤, 번역할 문서가 Translation DB에 없는지 확인한다
+2. 없다면 W3C-Translators 메일에 번역을 시작했음을 알린다.
+3. 번역을 시작한다. 번역본은 어떤 곳에 올려도 상관없으며, W3C에서 미러링을 따로 하지 않는다
+4. 어느정도 번역이 완료되면 검수를 거친다.
+  검수는 최소 3명 이상의 컨펌을 받는 것이 좋으며,
+  해당 부분에 지식을 가진 사람 외에 지식이 없는 사람이 읽어도 이해할 수 있어야 합니다.
+5. 번역이 완료되면 페이지 헤더에, 번역완료일(공개일), 번역자, 메일, 번역으로 인한 오류 관련 알림을 작성한다.
+6. W3C에서 제공하는 Validation TEST를 돌려서 Pass하는지 확인한다.
+7. W3C Translator 메일링에 번역이 완료되었음과 함께 URL을 공유한다.&lt;/p&gt;
+
+&lt;p&gt;타인이 올린 블로그 글을 번역하고 싶다면 아래 단계를 밟는다.
+회사 기술 블로그에 올라가 있는 글을 번역하는 경우도 보통 허락해주는 케이스가 더 많다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;작성자의 연락처를 찾아서 번역을 하겠다는 연락을 한다.&lt;/li&gt;
+  &lt;li&gt;일반적으로 허가를 줄 경우 번역을 하지만, 미리 번역하고 있더라도 크게 상관은 없다.
+상업 사이트에 올라가 있는 게시글은 번역이 어렵다.&lt;/li&gt;
+  &lt;li&gt;원작자가 허가한 경우 번역을 하며,
+번역을 완료하면 페이지 헤더에 원글 작성자, 게시글 링크, 번역으로 인한 오류가 있을 수 있음을 명시한다.&lt;/li&gt;
+  &lt;li&gt;게시한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위 단계만 밟으면 어떤 문서든 번역할 수 있다.
+번역은 본인의 의지다. 위 단계가 어려우면 도움을 줄 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;번역할 때 간단한 팁&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;번역을 할 때 자기보상을 주는 게 상당히 중요하다.
+  분량이 많기 때문에 일반적으로는 중간에 포기한다.
+  나같은 경우는 특정 분량 이상 번역을 완료할 때마다 원하던 걸 구매하거나, 먹고싶던 걸 먹곤 한다.&lt;/li&gt;
+  &lt;li&gt;단어집을 반드시 만들어야 한다.
+  단어집 없이 번역하면 위에서 기술한 바와 같이, 하나의 용어를 다양하게 번역하다가 용어 통일이 이루어지지 않을 수 있어,
+  읽는 사람에게 혼란을 줄 수도 있습니다.&lt;/li&gt;
+  &lt;li&gt;번역 원칙을 준수하자.
+  일반적으로 나는 빅 크런치의 번역 원칙을 좋아한다.
+  &lt;a href=&quot;http://blog.daum.net/bigcrunch/12347832&quot;&gt;http://blog.daum.net/bigcrunch/12347832&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;마무리&lt;/h2&gt;
+&lt;p&gt;어떻게 보면 뻔한이야기일 수 있고,
+어떻게 보면 이런걸 이야기할 수도 있나라고 생각할 수도 있지만,
+많은 사람들이 번역에 참석하였으면 하는 바램이 있다.&lt;/p&gt;
+
+&lt;p&gt;읽어주셔서 감사합니다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Feb 2016 14:10:09 +0900</pubDate>
+        <link>http://yourdomain.com/blah-blah/2016/02/03/how-to-translate.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/blah-blah/2016/02/03/how-to-translate.html</guid>
+        
+        
+        <category>blah-blah</category>
+        
+      </item>
     
   </channel>
 </rss>

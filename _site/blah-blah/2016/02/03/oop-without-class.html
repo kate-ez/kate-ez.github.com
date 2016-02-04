@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>왜 남의나라 말은 어려운가</title>
+  <meta name="description" content="Class 없이 OOP 하기">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/blah-blah/2016/02/03/oop-without-class.html">
+  <link rel="alternate" type="application/rss+xml" title="우아한형제들 기술블로그" href="http://yourdomain.com/feed.xml">
+  <link rel="shortcut icon" href="http://www.woowahan.com/wp-content/uploads/2015/04/woowahan_favicon.ico">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      <span class="site-logo">우아한형제들</span>
+      <span class="site-title">기술 블로그</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          <a class="page-link" href="http://woowabros.github.com" target="_blank">Github</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <section class="content-layout">
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	
+	  <header class="post-header">
+	    <h1 class="post-title" itemprop="name headline">왜 남의나라 말은 어려운가</h1>
+	    
+	    <p class="post-meta"><time datetime="2016-02-03T14:10:09+09:00" itemprop="datePublished">Feb 3, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">조은</span></span><img src="http://www.gravatar.com/avatar/72e5bf95c50bd10b4cc7b7a27e904413?s=50" class="gravatar"></p>
+	  </header>
+	
+	  <div class="post-content" itemprop="articleBody">
+	    <h1 id="class--oop-">Class 없이 OOP 하기</h1>
+
+<h2 id="section">저자</h2>
+<p><a href="http://j.mp/1ea27KW">@ahastudio</a> - 우아한형제들에서 Ruby on Rails로 LINE WOW를 개발했고, 최근엔 Java와 Spring Boot로 배달의민족 신규시스템을 개발하고 있습니다.</p>
+
+<h2 id="section-1">시작하며</h2>
+<p><a href="http://j.mp/1QPHpTf">한국 루비 커뮤니티 2015년 대림절 달력 첫 글</a>을 JavaScript로 옮겨보겠습니다. 그냥 Copy&amp;Paste해서 몇몇 부분만 고칠 거라 이상해도 양해 부탁드립니다.</p>
+
+<p>OOP라고 하면 Class와 Instance 개념을 떠올리는 경우가 많습니다. 객체끼리 서로 협력한다는 기본 원리만 가지고도 프로그래밍이 가능하다면 어떻게 될까요? Class가 없는 언어 중 하나인 JavaScript(ES6 이전 기준)를 통해 Class 없는 OOP를 경험해 봅시다.</p>
+
+<h2 id="section-2">준비물</h2>
+<ul>
+  <li>Node.js</li>
+  <li>흥미</li>
+  <li>용기</li>
+  <li>사랑과 우정 (필수는 아님)</li>
+</ul>
+
+<h2 id="section-3">객체 만들기</h2>
+<p>간단한 객체를 만들어 봅시다. 일단 Node 인터프리터 환경을 실행하죠.</p>
+
+<p><code class="highlighter-rouge">
+$ node
+</code></p>
+
+<p>객체가 뭘까요? 객체를 설명하는 방법은 너무나도 많은데, 추상화 단계를 너무 높이지 않고 손에 만져지는 걸로 살펴봅시다. “한 소년이 있었습니다” 정도면 어떨까요?</p>
+
+<p><code class="highlighter-rouge">javascript
+var boy = new Object();
+</code></p>
+
+<p>소년이 하나 만들어졌습니다. 제대로 잘 됐는지 한번 확인해 보죠.</p>
+
+<p><code class="highlighter-rouge">javascript
+console.log(boy);
+</code></p>
+
+<p>결과:
+<code class="highlighter-rouge"><span class="w">
+</span><span class="p">{}</span><span class="w">
+</span></code></p>
+
+<p>우리가 잘 아는 게 나왔죠? 그냥 빈 객체를 만들 땐 힘들게 <code class="highlighter-rouge">new Object</code> 하지 말고, 그냥 <code class="highlighter-rouge"><span class="p">{}</span></code> 쓰시면 됩니다.</p>
+
+<h2 id="section-4">객체에 특성 부여하기</h2>
+<p>소년을 소년이라고 부르니 뭔가 밋밋한 것 같네요. 소년에게 이름을 붙여주면 어떨까요? 무난하게 “강동원”이라고 합시다. 객체에 이름을 넣어주면 간단히 해결됩니다.</p>
+
+<p><code class="highlighter-rouge">javascript
+boy.name = 'Kang Dong-won';
+</code></p>
+
+<p>자, 이제 소년의 이름을 한번 확인해 볼까요?</p>
+
+<p><code class="highlighter-rouge">javascript
+console.log(boy.name);
+</code></p>
+
+<p>결과:
+<code class="highlighter-rouge">
+Kang Dong-won
+</code></p>
+
+<h2 id="section-5">또 다른 객체 만들기</h2>
+<p>소년은 혼자 있으니 슬펐습니다. 그러니 여자친구를 하나 만들어보죠.</p>
+
+<p><code class="highlighter-rouge">javascript
+var girl = Object.create(boy);
+</code></p>
+
+<p>강동원을 프로토타입으로 소녀 객체가 만들어졌습니다. 강동원을 프로토타입으로 삼고 있기 때문에 한가지 문제가 있습니다. 소녀가 강동원가 똑같이 행동한다는 거죠.</p>
+
+<p><code class="highlighter-rouge">javascript
+console.log(girl.name);
+</code></p>
+
+<p>결과:
+<code class="highlighter-rouge">
+Kang Dong-won
+</code></p>
+
+<p>“그럴 땐 얘기를 나누자 거울 속의 나하고”가 아니라면 이 상황을 벗어나야겠죠? 여자친구에게 이름을 하나 지어줍시다.</p>
+
+<p><code class="highlighter-rouge">javascript
+girl.name = 'Don Don';
+</code></p>
+
+<p>이제 둘을 사랑스럽게 엮어줄 수 있겠네요.</p>
+
+<p><code class="highlighter-rouge">javascript
+console.log([boy.name, girl.name].join(' ♥ '));
+</code></p>
+
+<p>결과:
+<code class="highlighter-rouge">
+Kang Dong-won ♥ Don Don
+</code></p>
+
+<h2 id="section-6">액션!</h2>
+<p>Class 없이 객체를 만들고, 특성을 부여하고, 이걸 활용하는 게 얼마나 쉬운지 우리는 경험했습니다. 강동원에게 구마 의식을 수행하게 하는 것도 이제는 쉽겠죠?</p>
+
+<p>```javascript
+girl.bad = true;</p>
+
+<p>// 소녀의 상태 확인
+console.log(girl.bad);</p>
+
+<p>// 강동원에게 구마 능력 부여
+// ES6 arrow function 사용함. MDN 문서 참고: http://j.mp/1NQfCfS
+boy.performExorcism = target =&gt; { target.bad = false };</p>
+
+<p>// 구마
+boy.performExorcism(girl);</p>
+
+<p>// 소녀의 상태 다시 확인
+console.log(girl.bad);
+```</p>
+
+<h2 id="section-7">정리하며</h2>
+<p>객체지향의 핵심은 객체입니다. 타입을 명확히 하고 싶어서 클래스를 사용하는 거죠. 이 둘을 명확히 구분해서 쓸 때, 유연함과 견고함의 균형을 맞출 수 있지 않을까요? <a href="http://j.mp/VHCBT8">TypeScript</a>도 한번 써보세요!</p>
+
+<p><strong>EOT</strong></p>
+
+	  </div>
+	  
+	  <a href="/" class="btn btn-block" id="back">목록으로 돌아가기</a>
+	
+	</article>
+</section>
+
+<script>
+	var goback = document.getElementById("back");
+    goback.addEventListener('click', function(event) {
+        window.history.back();
+        event.stopPropagation();
+    });
+</script>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+    © Woowabros. All rights reserved. Powered by GitHub Pages.
+  </div>
+
+</footer>
+
+  </body>
+
+</html>

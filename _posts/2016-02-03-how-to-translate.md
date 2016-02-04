@@ -4,7 +4,7 @@ title:  "왜 남의나라 말은 어려운가"
 description: "이 글은 번역을 하면서 느낀 어려운 점들을 정리하는 문서이기도 하지만, 다른 사람들이 번역을 할 때 정리하면 좋은 것들과 기술 문서, 오픈 소스에 기여하는 첫 단계인 번역에 대해 이야기 하고자 한다."
 author: echo
 date:   2016-02-03 14:10:09 +0900
-categories: blah_blah
+categories: blah-blah
 published: true
 ---
 
