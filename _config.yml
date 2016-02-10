@@ -1,7 +1,7 @@
 # Site settings
 title: 우아한형제들 기술블로그
 email: eng@woowahan.com
-description: 우아한형제들의 기술블로그입니다. 많은 내용이 올라갈거예요~ 기다려주세요
+description: 우아한형제들의 기술블로그입니다. 많은 내용이 올라갈거예요~ 기다려주세요!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: woowa_eng
